@@ -1,7 +1,6 @@
 ﻿using System.Text;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using RabbitMQ.Client;
 
 namespace MySampleApp.Controllers
 {
@@ -9,30 +8,18 @@ namespace MySampleApp.Controllers
     [ApiController]
     public class QueueController : ControllerBase
     {
-        private string _queueName;
+        public QueueController()
+        {
+        }
 
         [HttpPost]
         [Route("AddMessage")]
         public void AddMessageToQueue(string message)
         {
-            var factory = new ConnectionFactory() { HostName = "localhost" };
-            using (var connection = factory.CreateConnection())
-            using (var channel = connection.CreateModel())
-            {
-                _queueName = "main";
-                channel.QueueDeclare(queue: _queueName,
-                    durable: true,
-                    exclusive: false,
-                    autoDelete: false,
-                    arguments: null);
-
-                var body = Encoding.UTF8.GetBytes(message);
-
-                channel.BasicPublish(exchange: "",
-                    routingKey: _queueName,
-                    basicProperties: null,
-                    body: body);
-            }
+            using var rabbitMqConnectionManager = new RabbitMqConnectionManager();
+            rabbitMqConnectionManager.GetChannel();
+            var body = Encoding.UTF8.GetBytes(message);
+            rabbitMqConnectionManager.Publish(body);
         }
     }
 }

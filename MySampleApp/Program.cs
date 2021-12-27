@@ -1,3 +1,5 @@
+using MySampleApp;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -11,6 +13,7 @@ builder.Services.AddStackExchangeRedisCache(options =>
     options.Configuration = "127.0.0.1";
     options.InstanceName = "master";
 });
+builder.Services.AddTransient<RabbitMqConnectionManager>();
 
 var app = builder.Build();
 
