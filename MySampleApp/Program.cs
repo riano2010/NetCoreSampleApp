@@ -13,7 +13,7 @@ builder.Services.AddStackExchangeRedisCache(options =>
     options.Configuration = "127.0.0.1";
     options.InstanceName = "master";
 });
-builder.Services.AddTransient<RabbitMqConnectionManager>();
+builder.Services.AddTransient<IRabbitMqConnectionManager, RabbitMqTopicConnectionManager>();
 
 var app = builder.Build();
 

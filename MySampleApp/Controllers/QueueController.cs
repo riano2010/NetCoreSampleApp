@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Text.Json;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,18 +9,34 @@ namespace MySampleApp.Controllers
     [ApiController]
     public class QueueController : ControllerBase
     {
-        public QueueController()
+        public IRabbitMqConnectionManager RabbitMqConnectionManager { get; }
+
+        public QueueController(IRabbitMqConnectionManager rabbitMqConnectionManager)
         {
+            RabbitMqConnectionManager = rabbitMqConnectionManager;
         }
 
         [HttpPost]
         [Route("AddMessage")]
-        public void AddMessageToQueue(string message)
+        public async Task AddMessageToQueue(string message, string routingKey)
         {
-            using var rabbitMqConnectionManager = new RabbitMqConnectionManager();
-            rabbitMqConnectionManager.GetChannel();
-            var body = Encoding.UTF8.GetBytes(message);
-            rabbitMqConnectionManager.Publish(body);
+            RabbitMqConnectionManager.GetChannel();
+
+            await using var memoryStream = new MemoryStream();
+            await JsonSerializer.SerializeAsync<Message>(memoryStream, new Message(message));
+
+            RabbitMqConnectionManager.Publish(routingKey, memoryStream.ToArray());
+            RabbitMqConnectionManager.Dispose();
         }
+    }
+
+    public class Message
+    {
+        public Message(string text)
+        {
+            Text = text;
+        }
+
+        public string Text { get; set; }
     }
 }
