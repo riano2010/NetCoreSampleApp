@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PrepareUndefinedTargets": {
+      "commandName": "Project",
+      "commandLineArgs": "Content\\Запрос.json"
+    }
+  }
+}
