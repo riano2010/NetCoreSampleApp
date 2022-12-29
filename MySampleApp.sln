@@ -3,19 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MySampleApp", "MySampleApp\MySampleApp.csproj", "{A59402DB-A790-4893-B841-93B7D065E867}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueueConsumer", "QueueConsumer\QueueConsumer.csproj", "{C8EF3510-3B9C-4203-8396-D0B710225066}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TopicQueueConsumer", "TopicQueueConsumer\TopicQueueConsumer.csproj", "{77829C4C-CE61-47C8-983A-7669E3F33745}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EfCoreSample", "EfCoreSample\EfCoreSample.csproj", "{A71D22E1-D9CB-489D-94AC-A01E9A2CA5C2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonTransform", "JsonTransform\JsonTransform.csproj", "{94812725-0B8C-4AA6-AFA2-5B557FFF78F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonTransform", "JsonTransform\JsonTransform.csproj", "{94812725-0B8C-4AA6-AFA2-5B557FFF78F4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonTransformTool", "JsonTransformTool\JsonTransformTool.csproj", "{571AAF2A-AF8C-4DE8-B336-FCF1B27888F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonTransform.Tests", "JsonTransform.Tests\JsonTransform.Tests.csproj", "{64E1215D-DC8D-4606-A236-CC7519969CF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonTransform.Tests", "JsonTransform.Tests\JsonTransform.Tests.csproj", "{64E1215D-DC8D-4606-A236-CC7519969CF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,22 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A59402DB-A790-4893-B841-93B7D065E867}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A59402DB-A790-4893-B841-93B7D065E867}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A59402DB-A790-4893-B841-93B7D065E867}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A59402DB-A790-4893-B841-93B7D065E867}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C8EF3510-3B9C-4203-8396-D0B710225066}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C8EF3510-3B9C-4203-8396-D0B710225066}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C8EF3510-3B9C-4203-8396-D0B710225066}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C8EF3510-3B9C-4203-8396-D0B710225066}.Release|Any CPU.Build.0 = Release|Any CPU
-		{77829C4C-CE61-47C8-983A-7669E3F33745}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{77829C4C-CE61-47C8-983A-7669E3F33745}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{77829C4C-CE61-47C8-983A-7669E3F33745}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{77829C4C-CE61-47C8-983A-7669E3F33745}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A71D22E1-D9CB-489D-94AC-A01E9A2CA5C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A71D22E1-D9CB-489D-94AC-A01E9A2CA5C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A71D22E1-D9CB-489D-94AC-A01E9A2CA5C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A71D22E1-D9CB-489D-94AC-A01E9A2CA5C2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{94812725-0B8C-4AA6-AFA2-5B557FFF78F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{94812725-0B8C-4AA6-AFA2-5B557FFF78F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94812725-0B8C-4AA6-AFA2-5B557FFF78F4}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -9,10 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Content\Json_Has_4_Undefined_Target.json" />
     <None Remove="Content\Json_Has_No_Undefined_Target.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Content\Json_Has_4_Undefined_Target.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Json_Has_No_Undefined_Target.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -27,6 +31,18 @@
 
   <ItemGroup>
     <ProjectReference Include="..\JsonTransform\JsonTransform.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Content\Json_Has_4_Undefined_Target.result.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\Json_Has_Undefined_And_Company.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\Json_Has_Undefined_And_Company.result.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

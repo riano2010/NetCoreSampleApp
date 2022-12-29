@@ -1,0 +1,146 @@
+﻿{
+  "request": {
+    "externalId": "3179930",
+    "manifest": {
+      "regDate": "2022-12-14",
+      "regNumber": "152_3179930"
+    },
+    "payload": {
+      "applicant": {
+        "applicantType": {
+          "codeName": "FOIV_MVD",
+          "name": "МВД"
+        },
+        "name": "СУ УМВД РФ по г.Чебоксары",
+        "address": "г.Чебоксары, ул. Шевченко, д.23"
+      },
+      "documentNumber": "122/1578",
+      "documentDate": "2022-12-12",
+      "documentType": {
+        "codeName": "REQ_MVD",
+        "name": "Запрос МВД"
+      },
+      "repeated": false,
+      "inquirySignature": {
+        "approverName": "Яковлев С.Ю.",
+        "approverPosition": {
+          "name": "Начальник ОРП СИЭСПиБС"
+        }
+      },
+      "requestBasises": [
+        {
+          "requestBasisType": {
+            "codeName": "BASIS_CRIMINAL_CASE",
+            "name": "Уголовное дело"
+          },
+          "values": [
+            "12201970001001578"
+          ],
+          "date": "2022-12-07"
+        }
+      ],
+      "targets": [
+        {
+          "targetType": {
+            "codeName": "TARGET_UNDEFINED_CLIENT",
+            "name": "Неопределенный клиент"
+          },
+          "products": [
+            {
+              "productType": {
+                "codeName": "PROD_CARD",
+                "name": "Карта"
+              },
+              "value": "4893470286952251",
+              "attributes": [
+                {
+                  "attributeType": {
+                    "codeName": "ATTR_BANK_STATEMENT",
+                    "name": "Выписки"
+                  },
+                  "fromDate": "2022-01-15",
+                  "toDate": "2022-12-12"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "targetType": {
+            "codeName": "TARGET_UNDEFINED_CLIENT",
+            "name": "Неопределенный клиент"
+          },
+          "products": [
+            {
+              "productType": {
+                "codeName": "PROD_CARD",
+                "name": "Карта"
+              },
+              "value": "5368290186457430",
+              "attributes": [
+                {
+                  "attributeType": {
+                    "codeName": "ATTR_BANK_STATEMENT",
+                    "name": "Выписки"
+                  },
+                  "fromDate": "2022-01-15",
+                  "toDate": "2022-12-12"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "targetType": {
+            "codeName": "TARGET_UNDEFINED_CLIENT",
+            "name": "Неопределенный клиент"
+          },
+          "products": [
+            {
+              "productType": {
+                "codeName": "PROD_CARD",
+                "name": "Карта"
+              },
+              "value": "2200240490648173",
+              "attributes": [
+                {
+                  "attributeType": {
+                    "codeName": "ATTR_BANK_STATEMENT",
+                    "name": "Выписки"
+                  },
+                  "fromDate": "2022-01-15",
+                  "toDate": "2022-12-12"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "targetType": {
+            "codeName": "TARGET_UNDEFINED_CLIENT",
+            "name": "Неопределенный клиент"
+          },
+          "products": [
+            {
+              "productType": {
+                "codeName": "PROD_CARD",
+                "name": "Карта"
+              },
+              "value": "4893470414725181",
+              "attributes": [
+                {
+                  "attributeType": {
+                    "codeName": "ATTR_BANK_STATEMENT",
+                    "name": "Выписки"
+                  },
+                  "fromDate": "2022-01-15",
+                  "toDate": "2022-12-12"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

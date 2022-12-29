@@ -53,10 +53,13 @@ namespace JsonTransform
                     }
                 };
 
-                var productNoParent = JsonNode.Parse(product.ToJsonString());
-                target["products"].AsArray().Add(productNoParent);
+                if (product != null)
+                {
+                    var productNoParent = JsonNode.Parse(product.ToJsonString());
+                    target["products"]?.AsArray().Add(productNoParent);
 
-                results.Add(target);
+                    results.Add(target);
+                }
             }
 
             return results;
@@ -94,6 +97,9 @@ namespace JsonTransform
 
         public string Export()
         {
+            if (_jsonNode == null)
+                return string.Empty;
+
             return _jsonNode.ToJsonString(_options);
         }
     }
