@@ -1,5 +1,4 @@
 using Prometheus;
-using WebApiPrometheus;
 
 var builder = WebApplication.CreateBuilder(args);
 
