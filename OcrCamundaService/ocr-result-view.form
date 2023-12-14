@@ -1,0 +1,37 @@
+{
+  "components": [
+    {
+      "label": "Обоснование",
+      "type": "textfield",
+      "id": "Field_14nvtv3",
+      "key": "ocr_request_motivation",
+      "disabled": true
+    },
+    {
+      "values": [
+        {
+          "label": "Одобрено",
+          "value": "true"
+        },
+        {
+          "label": "Отказано",
+          "value": "false"
+        }
+      ],
+      "label": "Решение",
+      "type": "radio",
+      "id": "Field_0zoexvj",
+      "key": "review_ok",
+      "disabled": true
+    }
+  ],
+  "type": "default",
+  "id": "ocr-result-view",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.5.1"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.18.0",
+  "schemaVersion": 5
+}
