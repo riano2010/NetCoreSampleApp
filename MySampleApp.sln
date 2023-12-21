@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fe-Sample-Gen", "Fe-Sample-
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearnMetricsSample", "LearnMetricsSample\LearnMetricsSample.csproj", "{3B9B8197-EE86-4615-9395-B55F280AB0D1}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcrCamundaService", "OcrCamundaService\OcrCamundaService.csproj", "{91F4A8A3-C6B4-4700-88B9-88EDEB4B9125}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{3B9B8197-EE86-4615-9395-B55F280AB0D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B9B8197-EE86-4615-9395-B55F280AB0D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B9B8197-EE86-4615-9395-B55F280AB0D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91F4A8A3-C6B4-4700-88B9-88EDEB4B9125}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91F4A8A3-C6B4-4700-88B9-88EDEB4B9125}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91F4A8A3-C6B4-4700-88B9-88EDEB4B9125}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91F4A8A3-C6B4-4700-88B9-88EDEB4B9125}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
