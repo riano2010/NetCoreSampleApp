@@ -7,12 +7,12 @@ namespace OcrCamundaService
     [ApiController]
     public class OcrRequestsController : ControllerBase
     {
-        [HttpPost("")]
-        public object Create()
+        [HttpPost]
+        public object Create(int value)
         {
             return new
             {
-                result = 0
+                result = value
             };
         }
     }

@@ -3,7 +3,7 @@
   <bpmn:collaboration id="Collaboration_09sewf5">
     <bpmn:participant id="OcrRequestParticipant" name="Процесс обработки запроса на сканирование" processRef="OcrRequestProcess" />
   </bpmn:collaboration>
-  <bpmn:process id="OcrRequestProcess" name="Процесс обработки запроса на сканирование" isExecutable="true">
+  <bpmn:process id="OcrRequestProcess" name="Процесс обработки запроса на сканирование" isExecutable="true" camunda:historyTimeToLive="P30D">
     <bpmn:laneSet id="LaneSet_1vye9e2">
       <bpmn:lane id="Lane_18c76vr" name="Пользователь">
         <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
@@ -12,13 +12,13 @@
       </bpmn:lane>
       <bpmn:lane id="Lane_1l943kt" name="Администратор">
         <bpmn:flowNodeRef>Gateway_10eqkkv</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_1df3boq</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_1qwdido</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1df3boq</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:sequenceFlow id="Flow_03c9csi" sourceRef="Activity_0wp0pa9" targetRef="Event_08wfms2" />
     <bpmn:sequenceFlow id="Flow_1ydq61e" sourceRef="StartEvent_1" targetRef="Activity_1df3boq" />
-    <bpmn:startEvent id="StartEvent_1" camunda:formRef="ocr-request-form" camunda:formRefBinding="latest">
+    <bpmn:startEvent id="StartEvent_1" camunda:formRef="ocr-request-form" camunda:formRefBinding="latest" camunda:initiator="ocrUser">
       <bpmn:outgoing>Flow_1ydq61e</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:userTask id="Activity_0wp0pa9" name="Просмотр результатов сканирования" camunda:formRef="ocr-result-view" camunda:formRefBinding="latest" camunda:candidateGroups="ocrUser">
@@ -37,10 +37,6 @@
       <bpmn:outgoing>Flow_1jing8w</bpmn:outgoing>
       <bpmn:outgoing>Flow_0ys273j</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:userTask id="Activity_1df3boq" name="Просмотр заявки" camunda:formRef="ocr-review-form" camunda:formRefBinding="latest" camunda:candidateGroups="ocrAdmin">
-      <bpmn:incoming>Flow_1ydq61e</bpmn:incoming>
-      <bpmn:outgoing>Flow_1mrgli5</bpmn:outgoing>
-    </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_1mrgli5" sourceRef="Activity_1df3boq" targetRef="Gateway_10eqkkv" />
     <bpmn:sequenceFlow id="Flow_0ys273j" name="Одобрение" sourceRef="Gateway_10eqkkv" targetRef="Event_1qwdido">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${review_ok.equals("true")}</bpmn:conditionExpression>
@@ -53,6 +49,10 @@
         <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT300S</bpmn:timeDuration>
       </bpmn:timerEventDefinition>
     </bpmn:intermediateCatchEvent>
+    <bpmn:userTask id="Activity_1df3boq" name="Просмотр заявки" camunda:formRef="ocr-review-form" camunda:formRefBinding="latest" camunda:candidateGroups="ocrAdmin">
+      <bpmn:incoming>Flow_1ydq61e</bpmn:incoming>
+      <bpmn:outgoing>Flow_1mrgli5</bpmn:outgoing>
+    </bpmn:userTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_09sewf5">
@@ -80,11 +80,11 @@
       <bpmndi:BPMNShape id="Gateway_10eqkkv_di" bpmnElement="Gateway_10eqkkv" isMarkerVisible="true">
         <dc:Bounds x="545" y="465" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_040ly3k_di" bpmnElement="Activity_1df3boq">
-        <dc:Bounds x="320" y="450" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1raovzt_di" bpmnElement="Event_1qwdido">
         <dc:Bounds x="742" y="472" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_040ly3k_di" bpmnElement="Activity_1df3boq">
+        <dc:Bounds x="360" y="450" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_03c9csi_di" bpmnElement="Flow_03c9csi">
         <di:waypoint x="1040" y="150" />
@@ -92,8 +92,9 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1ydq61e_di" bpmnElement="Flow_1ydq61e">
         <di:waypoint x="238" y="150" />
-        <di:waypoint x="370" y="150" />
-        <di:waypoint x="370" y="450" />
+        <di:waypoint x="299" y="150" />
+        <di:waypoint x="299" y="490" />
+        <di:waypoint x="360" y="490" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1jing8w_di" bpmnElement="Flow_1jing8w">
         <di:waypoint x="570" y="465" />
@@ -104,7 +105,7 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1mrgli5_di" bpmnElement="Flow_1mrgli5">
-        <di:waypoint x="420" y="490" />
+        <di:waypoint x="460" y="490" />
         <di:waypoint x="545" y="490" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0ys273j_di" bpmnElement="Flow_0ys273j">
