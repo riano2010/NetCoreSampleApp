@@ -7,13 +7,31 @@ namespace OcrCamundaService
     [ApiController]
     public class OcrRequestsController : ControllerBase
     {
-        [HttpPost]
-        public object Create(int value)
+        public class OcrResult
         {
-            return new
+            public bool success { get; set; }
+        }
+
+        [HttpPost]
+        public object Create([FromBody]string value)
+        {
+
+            OcrResult ocrResult = new OcrResult();
+
+            if (string.IsNullOrWhiteSpace(value)) { 
+                ocrResult.success = false;
+            }
+            else if (value.Contains("bad"))
             {
-                result = value
-            };
+               ocrResult.success = false;
+            }
+            else
+            {
+                ocrResult.success = true;
+            }
+
+
+            return ocrResult;
         }
     }
 }

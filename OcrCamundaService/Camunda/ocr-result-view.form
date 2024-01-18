@@ -5,7 +5,10 @@
       "type": "textfield",
       "id": "Field_14nvtv3",
       "key": "ocr_request_motivation",
-      "disabled": true
+      "disabled": true,
+      "layout": {
+        "row": "Row_11a98sn"
+      }
     },
     {
       "values": [
@@ -22,16 +25,29 @@
       "type": "radio",
       "id": "Field_0zoexvj",
       "key": "review_ok",
-      "disabled": true
+      "disabled": true,
+      "layout": {
+        "row": "Row_0ybdhbf"
+      }
+    },
+    {
+      "label": "Результат работы сервиса распознавания",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_1oh7h3i",
+        "columns": null
+      },
+      "id": "Field_08l6szx",
+      "key": "ocrServiceResponse"
     }
   ],
   "type": "default",
   "id": "ocr-result-view",
   "exporter": {
     "name": "Camunda Modeler",
-    "version": "5.5.1"
+    "version": "5.17.0"
   },
   "executionPlatform": "Camunda Platform",
   "executionPlatformVersion": "7.18.0",
-  "schemaVersion": 5
+  "schemaVersion": 12
 }
