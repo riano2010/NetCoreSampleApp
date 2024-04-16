@@ -1,5 +1,13 @@
 ﻿using IO.Swagger.Models;
 
+//Task t1 = new Task(() => File.Open("e:\\еее.txt", FileMode.Open, FileAccess.Write));
+//Task t2 = new Task(() => File.Open("e:\\еее.txt", FileMode.Open, FileAccess.Write));
+
+//t1.Start();
+//t2.Start();
+
+//Task.WaitAll(t1, t2);
+
 var fnsDataCollectionTaskDto = new FnsDataCollectionTaskDto()
 {
     Applicant = new ApplicantDto()
