@@ -1,0 +1,25 @@
+{
+  "components": [
+    {
+      "label": "Укажите обоснование",
+      "type": "textfield",
+      "id": "Field_0c4si0s",
+      "key": "ocr_request_motivation",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "Row_15apdot"
+      }
+    }
+  ],
+  "type": "default",
+  "id": "ocr-request-form",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.17.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.18.0",
+  "schemaVersion": 12
+}

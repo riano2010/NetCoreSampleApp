@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0t5h6am" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.5.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
+  <bpmn:collaboration id="Collaboration_0819g86">
+    <bpmn:participant id="Participant_02xo2st" name="Взаимодействие с микросервисом" processRef="MicroserviceProcess" />
+  </bpmn:collaboration>
+  <bpmn:process id="MicroserviceProcess" isExecutable="true" camunda:historyTimeToLive="P30D">
+    <bpmn:sequenceFlow id="Flow_1u7vw6p" sourceRef="StartEvent_1" targetRef="Activity_0oor9vf" />
+    <bpmn:sequenceFlow id="Flow_1maiv3z" sourceRef="Activity_0oor9vf" targetRef="Event_1bh6y1v" />
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1u7vw6p</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_1bh6y1v">
+      <bpmn:incoming>Flow_1maiv3z</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="Activity_0oor9vf" name="Вызов микросервиса" camunda:asyncBefore="true">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="url">${restUrl}</camunda:inputParameter>
+            <camunda:inputParameter name="method">${method}</camunda:inputParameter>
+            <camunda:inputParameter name="payload">"${payload}"</camunda:inputParameter>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Content-Type">application/json</camunda:entry>
+                <camunda:entry key="accept">*/*</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:outputParameter name="ocrServiceResponse">
+              <camunda:script scriptFormat="JavaScript">var response = connector.getVariable("response");
+response;</camunda:script>
+            </camunda:outputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+        <camunda:failedJobRetryTimeCycle />
+        <camunda:executionListener event="end">
+          <camunda:script scriptFormat="JavaScript">
+ throw new org.camunda.bpm.engine.delegate.BpmnError("MicroserviceUnavailable", "Сервис распознавания недоступен!")
+</camunda:script>
+        </camunda:executionListener>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1u7vw6p</bpmn:incoming>
+      <bpmn:outgoing>Flow_1maiv3z</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmn:error id="Error_0d0b2qv" name="MicroserviceUnavailable" errorCode="MicroserviceUnavailable" camunda:errorMessage="MicroserviceUnavailable" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0819g86">
+      <bpmndi:BPMNShape id="Participant_02xo2st_di" bpmnElement="Participant_02xo2st" isHorizontal="true">
+        <dc:Bounds x="129" y="57" width="600" height="321" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="172" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1bh6y1v_di" bpmnElement="Event_1bh6y1v">
+        <dc:Bounds x="632" y="172" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1o8zyi4_di" bpmnElement="Activity_0oor9vf">
+        <dc:Bounds x="400" y="150" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1u7vw6p_di" bpmnElement="Flow_1u7vw6p">
+        <di:waypoint x="215" y="190" />
+        <di:waypoint x="400" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1maiv3z_di" bpmnElement="Flow_1maiv3z">
+        <di:waypoint x="500" y="190" />
+        <di:waypoint x="632" y="190" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
